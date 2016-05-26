@@ -1,4 +1,5 @@
-<img src="./images/logo_hearcloud_full.png" width="200px"/ style="display: block; margin-left: auto; margin-right: auto">
+<img src="./images/logo_hearcloud_full.png" width="200px"/>
+====
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -10,4 +11,4 @@ To build the PDF file, just clone the repo and run:
 $ bash makePDF.sh
 ```
 
-<img src="./images/CC-SA-logo.png" width="100px"/ style="float:right">
+<img src="./images/CC-SA-logo.png" width="100px"/>
