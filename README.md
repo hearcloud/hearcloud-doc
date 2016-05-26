@@ -1,6 +1,4 @@
-![](./images/logo_hearcloud_full.png)
-
-<img src="./images/logo_hearcloud_full.png" width="40px"/>
+<img src="./images/logo_hearcloud_full.png" width="300px"/>
 
 Documentation about my Final Degree Project "Hearcloud" (Spanish)
 
