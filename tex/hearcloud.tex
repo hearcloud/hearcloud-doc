@@ -17,7 +17,7 @@
 \newcommand{\mySubject}{Trabajo Fin de Grado\xspace}
 \newcommand{\myTitle}{Hearcloud\xspace}
 \newcommand{\mySubTitle}{Aplicación web orientada a la organización y gestión de música online\xspace}
-\newcommand{\mySubTitleENG}{Web aplication for music management\xspace}
+\newcommand{\mySubTitleENG}{Web application for music management\xspace}
 \newcommand{\myDegree}{Grado en Ingeniería Informática\xspace}
 \newcommand{\myName}{Mariano Palomo Villafranca\xspace}
 \newcommand{\myEmail}{mpvillafranca@correo.ugr.es\xspace}
@@ -180,17 +180,20 @@ pdfproducer = {pdflatex}
 
 \input{chapters/08_Conclusiones}
 
+\backmatter
+\begingroup
+	\setlength\parindent{0pt}
+	\input{back/glossary}
+\endgroup
 
-%%\nocite{*}
-%\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{miunsrturl}
-%
-%\appendix
-%\input{apendices/manual_usuario/manual_usuario}
-%%\input{apendices/paper/paper}
-%\input{glosario/entradas_glosario}
-% \addcontentsline{toc}{chapter}{Glosario}
-% \printglossary
-\chapter*{}
+\input{back/appendix}
+%\input{back/manual_usuario}
+
+\newpage
+\begin{thebibliography}{99}
+	\input{back/bibliography}
+\end{thebibliography}
+
+
 \thispagestyle{empty}
 \end{document}
