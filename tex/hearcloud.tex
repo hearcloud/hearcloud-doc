@@ -11,6 +11,8 @@
 
 \usepackage{xspace}
 
+\usepackage{datatool}% http://ctan.org/pkg/datatool
+
 % ********************************************************************
 % Información reutilizable
 % ********************************************************************
@@ -130,6 +132,24 @@ pdfproducer = {pdflatex}
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
+
+% ********************************************************************
+% Para ordenar listas de elementos
+% ********************************************************************
+\newcommand{\sortitem}[1]{%
+  \DTLnewrow{list}% Create a new entry
+  \DTLnewdbentry{list}{description}{#1}% Add entry as description
+}
+\newenvironment{sortedlist}{%
+  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}% Create new/discard old list
+}{%
+  \DTLsort{description}{list}% Sort list
+  \begin{itemize}%
+    \DTLforeach*{list}{\theDesc=description}{%
+      \item \theDesc}% Print each item
+  \end{itemize}%
+}
+
 % ********************************************************************
 % Para que en las páginas en blanco no tengan cabeceras
 % ********************************************************************
@@ -180,16 +200,17 @@ pdfproducer = {pdflatex}
 
 \input{chapters/08_Conclusiones}
 
-\backmatter
-\begingroup
-	\setlength\parindent{0pt}
-	\input{back/glossary}
-\endgroup
+\chapter{Apéndices}
+\label{cap:apendices}
 
-\input{back/appendix}
-%\input{back/manual_usuario}
+\input{back/glossary}
+
+\input{back/licenses}
+
+\input{back/user_manual}
 
 \newpage
+
 \begin{thebibliography}{99}
 	\input{back/bibliography}
 \end{thebibliography}
