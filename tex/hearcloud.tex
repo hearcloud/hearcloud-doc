@@ -12,6 +12,7 @@
 \usepackage{xspace}
 
 \usepackage{datatool}% http://ctan.org/pkg/datatool
+\usepackage{float}
 
 % ********************************************************************
 % Información reutilizable
@@ -74,60 +75,55 @@ pdfproducer = {pdflatex}
 % ********************************************************************
 % Listados
 % ********************************************************************
-\lstset{ frame=Ltb,
-     framerule=0.5pt,
-     aboveskip=0.5cm,
-     framextopmargin=3pt,
-     framexbottommargin=3pt,
-     framexleftmargin=0.1cm,
-     framesep=0pt,
-     rulesep=.4pt,
-     backgroundcolor=\color{gray97},
-     rulesepcolor=\color{black},
-     %
-     stringstyle=\ttfamily,
-     showstringspaces = false,
-     basicstyle=\scriptsize\ttfamily,
-     commentstyle=\color{gray45},
-     keywordstyle=\bfseries,
-     %
-     numbers=left,
-     numbersep=6pt,
-     numberstyle=\tiny,
-     numberfirstline = false,
-     breaklines=true,
-   }
+\lstset{
+	aboveskip=0.5cm,
+	backgroundcolor=\color{gray97},
+	basicstyle=\scriptsize\ttfamily,
+	breaklines=true,
+	commentstyle=\color{gray45},
+	frame=Ltb,
+	framerule=0.5pt,
+	framesep=0pt,
+	framexbottommargin=3pt,
+	framexleftmargin=0.1cm,
+	framextopmargin=3pt,
+	keywordstyle=\bfseries,
+	numberfirstline = false,
+	numbers=left,
+	numbersep=6pt,
+	numberstyle=\tiny,
+	rulesep=.4pt,
+	rulesepcolor=\color{black},
+	showstringspaces = false,
+	stringstyle=\ttfamily,
+	literate={á}{{\'a}}1
+	         {é}{{\'e}}1
+	         {í}{{\'i}}1
+	         {ó}{{\'o}}1
+	         {ú}{{\'u}}1
+	         {ñ}{{\~n}}1
+}
  
 % Minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
-   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+	{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
 % ********************************************************************
 % Estilo de listados de código
 % ********************************************************************
-\lstdefinestyle{CodigoC}
-   {
-	basicstyle=\scriptsize,
-	frame=single,
-	language=C,
-	numbers=left
-   }
-\lstdefinestyle{CodigoC++}
-   {
-	basicstyle=\small,
-	frame=single,
-	backgroundcolor=\color{gray30},
-	language=C++,
-	numbers=left
-   }
-
- 
-\lstdefinestyle{Consola}
-   {basicstyle=\scriptsize\bf\ttfamily,
-    backgroundcolor=\color{gray30},
-    frame=single,
-    numbers=none
-   }
+\lstdefinelanguage{Python}{
+ keywords={typeof, null, catch, switch, in, int, str, float, self},
+ keywordstyle=\color{ForestGreen}\bfseries,
+ ndkeywords={boolean, throw, import},
+ ndkeywords={return, class, if ,elif, endif, while, do, else, True, False , catch, def},
+ ndkeywordstyle=\color{BrickRed}\bfseries,
+ identifierstyle=\color{black},
+ sensitive=false,
+ comment=[l]{\#},
+ morecomment=[s]{/*}{*/},
+ commentstyle=\color{purple}\ttfamily,
+ stringstyle=\color{red}\ttfamily,
+}
 
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}

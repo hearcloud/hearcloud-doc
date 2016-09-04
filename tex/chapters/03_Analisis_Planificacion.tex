@@ -15,7 +15,7 @@ A continuación se describen cada una de las fases propuestas así como una seri
 	\begin{itemize}
 		\item Búsqueda de información.
 		\item Determinación de objetivos.
-		\item \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 20 horas
 	\end{itemize}
 	
 	\item \textbf{Fase 2}. Planificación. Elaboración y desarrollo de la documentación correspondiente a la planificación del proyecto.
@@ -24,14 +24,14 @@ A continuación se describen cada una de las fases propuestas así como una seri
 		\item Especificar las actividades de las que constará cada fase.
 		\item Análisis de presupuesto.
 		\item Temporización
-		\item \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 20 horas
 	\end{itemize}
 	
-	\item \textbf{Fase 3}. Análisis y diseño. Estudio del problema a abordar, análisis de requisitos y diagramas asociados de cara a concretar la forma en que desarrollarlo.
+	\item \textbf{Fase 3}. Análisis y diseño. Estudio del problema a abordar, análisis de requisitos y diagramas asociados de cara a concretar la forma en cómo desarrollarlo.
 	\begin{itemize}
 		\item Análisis de requisitos
 		\item Diseño de diagramas
-		\item \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 40 horas
 	\end{itemize}
 	
 	\item \textbf{Fase 4}. Implementación. Tras las fases de planificación y diseño, se pasa a codificar todo lo necesario con el fin de cumplir los \hyperref[cap:objetivos]{objetivos propuestos}).
@@ -40,13 +40,13 @@ A continuación se describen cada una de las fases propuestas así como una seri
 		\item Desarrollo \textit{Backend}: modelos, \textit{urls}, controladores.
 		\item Desarrollo \textit{Frontend}: vistas, \textit{templates}, \textit{HTML}, \textit{CSS}, \textit{Javascript}.
 		\item Tareas de automatización (\textit{DevOps}).
-		\item \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 160 horas
 	\end{itemize}
 	
 	\item \textbf{Fase 5}. Pruebas. Se hará uso de \textit{tests unitarios}, entre otros procedimientos, para probar el código generado y que el sistema funciona correctamente.
 	\begin{itemize}
 		\item Pruebas del software: modelos, vistas, formularios.
- \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 35 horas
 	\end{itemize}
 	
 	\item \textbf{Fase 6}. Documentación final. Completar la documentación restante asociada al proyecto, como manuales de usuario o anexos.
@@ -54,7 +54,7 @@ A continuación se describen cada una de las fases propuestas así como una seri
 		\item Documentación del sistema.
 		\item Manual de usuario.
 		\item Documentación del proyecto.
-		\item \underline{\textit{Estimación}}: X horas
+		\item \underline{\textit{Estimación}}: 25 horas
 	\end{itemize}
 \end{itemize}
 
@@ -68,31 +68,244 @@ La principal ventaja del uso de software libre es que no es necesario adquirir l
 
 El único aspecto económico relevante que habrá que considerar en este caso será, entonces, el de los posibles gastos por el uso de un servidor en el que se implante el software.
 
-\subsection{Temporización}
+\subsection*{Temporización}
 
 Por último, para poder apreciar de una forma algo más visual la planificación temporal descrita, generamos un diagrama de \textit{Gantt} que represente dicha información.
 
-\section{Estudio de mercado}
+TODO: AQUÍ DIAGRAMA DE GANTT
+
+\section{Análisis}
+\label{sec:analisis}
+
+\subsection{Estudio de mercado}
 
 La creación de un producto software nuevo no es una tarea sencilla, sobre todo cuando no cuentas con una mínima información acerca del mercado en el que esperas que se desenvuelva. Por eso, realizar un estudio acerca de las alternativas ya existentes, nos ayudará a obtener datos acerca de nuestros ``competidores'' y localizar posibles enfoques promocionales de cara a resaltar las ventajas que nuestra solución pueda ofrecer frente a las suyas. Entre ellos, destacamos:
 
-\subsection{Spotify \cite{Spotify}}
+\subsubsection{Spotify \cite{Spotify}}
 Spotify es un servicio de reproducción de música vía streaming que permite escuchar un amplio catálogo en modo radio o bien buscando por artista, álbum o listas de reproducción. Si embargo, éste es ofrecido por la plataforma y no es posible almacenar tu própia música en ella para combinarlo, de alguna manera, con lo que ya ofrecen ellos. Por tanto, si una canción no se encuentra entre sus bases de datos, tendrás que recurrir a otra alternativa para poder oirla. No obstante, si no es el caso, la plataforma representa una gran alternativa para disponer de tu selección musical en la nube y organizada según tus propios criterios en modo de listas de reproducción.\\
 
 El servicio puede utilizarse de dos formas diferentes: la versión gratuita, con la publicidad ocasional mencionada y la limitación de no poder escuchar canciones bajo demanda en la versión móvil, y la versión ``\textit{premium}'', que elimina todas estas limitaciones, ofrece una calidad de audio mejor y la posibilidad de descargar la música para escucharla en modo sin conexión.
 
-\subsection{Soundcloud \cite{Soundcloud}}
+\subsubsection{Soundcloud \cite{Soundcloud}}
 Soundcloud es una plataforma de distribución de audio en línea que permite a sus usuarios subir, grabar, promocionar y compartir su música de autoría original. Está, por tanto, orientada sobre todo a músicos y sellos discográficos, aunque cualquier usuario registrado tiene acceso a la música de estos y puede almacenarla en listas de reproducción, públicas o privadas, en su propio perfil para su reproducción.\\
 
 La plataforma ofrece servicios premium en dos modalidades diferentes: ``\textit{Pro}'', que permite subir hasta seis horas de audio y, estadísticas ampliadas sobre los usuarios que reproducen tu música o deshabilitar comentarios y ``\textit{Pro Unlimited}'', que permite subir horas ilimitadas de música al usuario.
 
-\subsection{Amazon Cloud Player \cite{ACP}} 
+\subsubsection{Amazon Cloud Player \cite{ACP}} 
 Amazon Cloud Player es un servicio integrado con la plataforma Amazon Music que permite al usuario almacenar y reproducir su música desde el navegador, aplicaciones móviles y de escritorio, Sonos y otras plataformas como televisiones inteligentes (se permiten hasta 10 dispositivos, que pueden autorizarse y desautorizarse desde la interfaz web). La capacidad de almacenamiento está limitada a 5GB y 250 canciones de forma gratuita, sin contar la música comprada a través de Amazon Music. Con la suscripción a Amazon Music, se puede ampliar el número hasta 250.000. Además, se permiten editar algunos metadatos de dichos ficheros, como el título, artista o álbum. La única limitación del servicio es que, aún para usar la cuenta gratuita, es necesario introducir un número de tarjeta de crédito en el sistema.
 
-\subsection{Google Play Music \cite{GPM}}
+\subsubsection{Google Play Music \cite{GPM}}
 Google Play Music es un servicio de almacenamiento y sincronización de música en la nube, a la vez que tienda musical en línea que forma parte de Google Play. Éste permite el almacenamiento gratuito de canciones propias hasta un total de 50.000 que, al sincronizarse en la nube, están disponibles desde cualquier punto. La suscripción ''\textit{all access}'' permite la reproducción en streaming bajo demanda de cualquier canción del catálogo de la tienda. Con la aplicación móvil, podremos almacenar la música de forma local para poder escucharla en modo \textit{offline}. No obstante, los usuarios deberán verificar su ubicación aportando un número de tarjeta de crédito válido a su cuenta de Google antes de poder ingresar por primera vez a la plataforma.\\
 
 Durante el proceso de subida, el sistema intentará encontrar alguna coincidencia con el catálogo de Google Play y, si se encuenta alguno, la canción se añadirá a la librería del usuario sin la necesidad de que esta se complete de subir. Además, el servicio permite la creación de listas de reproducción automática, característica conocida como ``\textit{Instant Mix}, y recibir recomendaciones personalizadas en base a lo que más reproduzcas.
 
-\subsection{My Music Cloud \cite{MMC}}
+\subsubsection{My Music Cloud \cite{MMC}}
 My Music Cloud es una plataforma que permite almacenar la música de sus usuarios en todos sus dispositivos y que dispone de un reproductor personalizado e inteligente. La aplicación sincroniza la música del usuario desde cualquier ordenador, \textit{smart phone}, tablet o televición y, una vez subida, permite reproducirla, incluso sin conexión. La versión gratuita permite subir cuanta música se quiera, aunque solamente podrán sincronizarse con los diferentes dispositivos 250. Al igual que los servicios anteriores, también dispone de una tienda online, aunque mucho más limitada en cuanto a catálogo ofertado. No obstante, la música subida por el usuario no está accesible para otros. Permite editar los metadatos básicos de cada fichero. Los formatos soportados son: aac, mp3, ra, wav, wma, m4a, ogg, 3g2, 3gp, 3gpp and 3gpp2, flac, siempre y cuando cada fichero ocupe menos de 100MB. La opción de pago amplía el numero máximo de dispositivos a sincronizar de 5 a 10, permite sincronizar y reproducir pistas ilimitadamente y elimina los anuncios.
+
+\subsection{Análisis de requisitos}
+
+\subsubsection{Requisitos funcionales}
+A continuación se expone una descripción de los requisitos más importantes a nivel de funciones que debe incluir el sistema, realizando una clasificación en categorías. A cada uno de los requisitos se le ha asignado un código y nombre con el fin de identificarlo fácilmente a lo largo de todo el proyecto.
+
+\begin{itemize}
+	\item \textbf{RF-1. Gestión de usuarios}. Mantener un control de los usuarios dados de alta en el sistema en cada momento y controlar su rol en él.
+	\begin{itemize}
+		\item \textbf{RF-1.1. Dar de alta a un usuario} si no posee ya cuenta y desea subir una canción o crear una lista de reproducción.
+		\item \textbf{RF-1.2. Dar de baja a un usuario}. Si el usuario no desea seguir afiliado a la página debe poder darse de baja en cualquier momento, desapareciendo de ese modo toda su información de la página.
+		\item \textbf{RF-1.3. Consulta de información}. Cualquier usuario puede ver la información relacionada con él, como su nombre de usuario, correo electrónico o imagen de perfil, así como sus canciones y listas de reproducción.
+		\item \textbf{RF-1.4. Modificación de datos}. El usuario podrá modificar sus datos personales, nombre de usuario(siempre que esté disponible) y eliminar cualquiera de sus canciones y/o listas de reproducción.
+	\end{itemize}				
+	
+	\item \textbf{RF-2. Gestión de canciones}. Se permite crear/eliminar cualquier canción de la base de datos, así como consultar/modificar cualquiera de sus datos.
+	\begin{itemize}
+		\item \textbf{RF-2.1. Añadir canciones}. Cada canción tiene asociados una serie de metadatos, los cuales se tomaran a partir del fichero subido al sistema.
+		\item \textbf{RF-2.2. Eliminar canciones}. Se eliminará del sistema toda la información relativa a la canción, incluyendo su imagen y fichero asociados.
+		\item \textbf{RF-2.3. Consultar canciones}. Se mostrarán los datos relativos a una canción.
+		\item \textbf{RF-2.4. Modificar canción}. Se actualizarán los campos modificados de los metadatos de la canción, tanto en la base de datos como en el fichero asociado.
+	\end{itemize}
+	
+	\item \textbf{RF-3. Gestión de listas de reproducción}. Se permite crear/eliminar listas de reproducción de la base de datos, así como consultar/modificar cualquiera de sus datos.
+	\begin{itemize}
+		\item \textbf{RF-3.1. Crear listas de reproducción}. Cada lista de reproducción puede contener una o más canciones. Si no contiene ninguna, la lista de reproducción estará vacía.
+		\item \textbf{RF-3.2. Eliminar listas de reproducción}. Se eliminará del sistema la lista de reproducción indicada y las canciones que ésta pueda contener se desvincularán de ella.
+		\item \textbf{RF-3.3. Consultar listas de reproducción}. Se mostrarán los datos relativos a la lista de reproducción, como su nombre o canciones que contiene.
+		\item \textbf{RF-3.4. Modificar lista de reproducción}. 
+	\end{itemize}	 
+\end{itemize}
+\subsubsection{Requisitos no funcionales}
+Aquí se incluyen algunas restricciones que afectarán a los requisitos anteriores.
+
+\begin{itemize}
+
+	\item \textbf{RNF-1. Seguridad de la información}. Ante un posible fallo del sistema, no debe perderse la información previamente almacenada. En un principio esto está garantizado, ya que sistema y base de datos serán entidades relacionadas pero no aisladas. No obstante, será buena práctica tener en cuenta la posibilidad de realizar copias de seguridad periódicamente o alguna otra alternativa que permita replicar los datos.
+
+	\item \textbf{RNF-2. Concurrencia}. Tanto administradores como usuarios podrán trabajar simultáneamente con el sistema,
+introduciendo información, consultándola o modificándola.
+
+	\item \textbf{RNF-3. Autenticación}. Es necesario controlar las diferentes restricciones de los usuarios (administradores y usuarios comunes), de manera que cada uno pueda realizar sólo determinadas tareas.
+
+	\item \textbf{RNF-4. Legales}. Deben tenerse en cuenta ciertos criterios de responsabilidad sobre los datos publicados, como que los datos de un usuario, no sean accesibles a otro. No obstante, y como puede consultarse en esta referencia \cite{GMELNEL}, el responsable último de los datos subidos a la plataforma, será el usuario.
+	
+	\item \textbf{RNF-5. Rendimiento}. El sistema debe tener un tiempo de respuesta y aprovechamiento de los recursos
+óptimo.
+
+\end{itemize}
+
+\subsubsection{Requisitos de información}
+A continuación se indica la información que es necesario almacenar en el sistema.
+
+\begin{itemize}
+	\item \textbf{RI-1. Usuarios}. Datos sobre las personas que integrarán el sistema que se va a desarrollar.
+	\begin{itemize}
+		\item \underline{Contenido}: nombre de usuario, clave de acceso, dirección de correo electrónico, nombre, apellidos, rol.
+		\item \underline{Requisitos asociados}: RF-1, RNF-1, RNF-3.
+	\end{itemize}
+	
+	\item \textbf{RI-2. Canciones}. Datos técnicos sobre las canciones almacenadas en el sistema.
+	\begin{itemize}
+		\item \underline{Contenido}: fichero, nombre del fichero original, tamaño del fichero, tipo de fichero, título, artista, álbum, fecha de publicación, artista del álbum, número de pista, número de pistas del álbum, \textit{Beats Per Minute} (BPM), artista original, tonalidad, compositor, compositor de la letra, comentarios, remezclador, sello discográfico, género, usuario al que pertenece, playlists en las que se encuentra incluida.
+		\item \underline{Requisitos asociados}: RF-2, RF-3, RNF-1, RNF-3, RNF-4, RNF-5
+	\end{itemize}
+	
+	\item \textbf{RI-3. Listas de reproducción}. Contendrá la información relacionada con las listas de reproducción creadas por los usuarios del sistema.
+	\begin{itemize}
+		\item \underline{Contenido}: título de la lista de reproducción, usuario que la creó y canciones incluidas en ella.
+		\item \underline{Requisitos asociados}: RF-2, RF-3, RNF-1, RNF-3, RNF-4, RNF-5
+	\end{itemize}
+	
+\end{itemize}
+
+\subsubsection{Casos de uso}
+
+\paragraph{Descripción de los actores}
+
+\begin{itemize}
+	\item \textbf{AC-1. Administrador}.
+	\begin{itemize}
+		\item \textbf{Descripción}. Gestiona la página web, desde dar de alta usuarios, hasta modificar cualquier tipo de información relacionada con éstos, darlos de baja o controlar el acceso de otros administradores.
+		\item \textbf{Características}. Conocimientos avanzados sobre creación y administración de páginas web.
+		\item \textbf{Relaciones}. Se relaciona con los demás usuarios del sistema.
+		\item \textbf{Referencias}. Interviene en la administración de usuarios, canciones y listas de reproducción.
+		\item \textbf{Atributos}.
+		\begin{itemize}
+			\item \textbf{Nombre de usuario}: pseudónimo de acceso al sistema.
+			\item \textbf{Correo electrónico}: correo electrónico de contacto.
+			\item \textbf{Contraseña}. Clave de acceso al sistema.
+			\item \textbf{Datos personales}: nombre y apellidos.
+		\end{itemize}
+	\end{itemize}
+	
+	\item \textbf{AC-2. Usuario}.
+	\begin{itemize}
+		\item \textbf{Descripción}. Usuario que accede al sistema para consultar su colección de canciones y listas de reproducción o crear y almacenar nuevas.
+		\item \textbf{Características}. Interés por la música, conocimientos básicos sobre el manejo de ordenadores o dispositivos móviles para acceder y manejar el sistema.
+		\item \textbf{Relaciones}. Sin relación con otros usuarios del sistema.
+		\item \textbf{Referencias}. Puede consultar la base de datos de sus canciones, sus listas de reproducción y datos asociados con su perfil.
+		\item \textbf{Atributos}.
+		\begin{itemize}
+			\item \textbf{Nombre de usuario}: pseudónimo de acceso al sistema.
+			\item \textbf{Correo electrónico}: correo electrónico de contacto.
+			\item \textbf{Contraseña}. Clave de acceso al sistema.
+			\item \textbf{Datos personales}: nombre y apellidos.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\paragraph{Diagramas del modelo de casos de uso} \mbox{}\\
+
+Los diagramas de casos de uso representa como los diferentes actores se relacionan con el sistema para usar sus funciones. A continuación se muestran los diagramas generados.
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{../visual_paradigm_uml/CU-1_Gestion_de_usuarios.png}
+  \caption{Diagrama de casos de uso. Gestión de usuarios}
+  \label{fig:diag_cu_gu}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.4\textwidth]{../visual_paradigm_uml/CU-2_Gestion_de_canciones.png}
+  \caption{Diagrama de casos de uso. Gestión de canciones}
+  \label{fig:diag_cu_gc}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{../visual_paradigm_uml/CU-3_Gestion_de_listas_de_reproduccion.png}
+  \caption{Diagrama de casos de uso. Gestión de listas de reproducción}
+  \label{fig:diag_cu_glr}
+  \end{center}
+\end{figure}
+
+\paragraph{Descripción de los casos de uso} \mbox{}\\
+
+\textbf{CU-1.} Inicio automático del servidor del portal.
+  
+\begin{itemize}
+    \item Descripción:
+    \item Precondición: El servidor esté detenido.
+    \item Postcondición: El portal será accesible públicamente.
+    
+    \begin{table}[!ht]
+
+      \begin{center}
+	    \begin{tabular}{|l|l|l|l|}
+	      \hline
+	      \multicolumn{4}{|c|}{{\bf Curso normal}}
+	      \\ \hline
+	      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{c|}{{\bf Sistema}}
+	      \\ \hline
+	      {\it 1} & 
+	      \begin{tabular}[c]{@{}l@{}}
+	        Desarrollador: da orden de\\
+	        que se inicie el servidor\\
+	        del portal.
+	      \end{tabular} &
+	      &
+	      \\ \hline
+	      &
+	      &
+	      {\it 2a} &
+	      \begin{tabular}[c]{@{}l@{}}
+	        Comprueba que el servidor\\
+	        está detenido y lo inicia\\
+	        para que el portal esté\\
+	        operativo.
+	      \end{tabular}
+	      \\ \hline
+	    \end{tabular}
+	    \caption{Curso normal de CU-1. Inicio automático del servidor del portal}
+	    \label{table:cn_cu_1}
+      \end{center}
+    \end{table}
+
+    \begin{table}[!ht]
+      \begin{center}
+	    \begin{tabular}{|l|l|}
+	      \hline
+	      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+	      \\ \hline
+	      {\it 2b} &
+	      \begin{tabular}[c]{@{}l@{}}
+	        Si el servidor está funcionando, no se ejecuta el script de\\
+	        inicio del servidor.
+	      \end{tabular}\\
+	      \hline
+	    \end{tabular}
+	    \caption{Curso alterno de CU-1. Inicio automático del servidor del portal}
+	    \label{table:ca_cu_1}
+      \end{center}
+    \end{table}
+\end{itemize}
+
+\subsubsection{Diagramas de actividad}
+
+\paragraph{Usuario registrado} \mbox{}\\
+
+\subsubsection{Diagramas de secuencia}
+
+\subsubsection{Diagramas de clases del diseño}
+
+
