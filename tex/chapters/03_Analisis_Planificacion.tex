@@ -68,7 +68,7 @@ La principal ventaja del uso de software libre es que no es necesario adquirir l
 
 El único aspecto económico relevante que habrá que considerar en este caso será, entonces, el de los posibles gastos por el uso de un servidor en el que se implante el software.
 
-\subsection*{Temporización}
+\subsection{Temporización}
 
 Por último, para poder apreciar de una forma algo más visual la planificación temporal descrita, generamos un diagrama de \textit{Gantt} que represente dicha información.
 
@@ -239,66 +239,212 @@ Los diagramas de casos de uso representa como los diferentes actores se relacion
   \end{center}
 \end{figure}
 
-\paragraph{Descripción de los casos de uso} \mbox{}\\
+\paragraph{Descripción de los casos de uso} \mbox{}
 
-\textbf{CU-1.} Inicio automático del servidor del portal.
+A continuación se exponen los casos de uso principales del sistema, correspondientes a las
+acciones básicas del usuario con la plataforma, definiendo el comportamiento normal y
+alternativo de cada acción.
+
+% CASO DE USO 1
+\textbf{CU-1.} Registro de usuarios (\textit{Sign Up}).
   
 \begin{itemize}
-    \item Descripción:
-    \item Precondición: El servidor esté detenido.
-    \item Postcondición: El portal será accesible públicamente.
-    
-    \begin{table}[!ht]
-
-      \begin{center}
-	    \begin{tabular}{|l|l|l|l|}
-	      \hline
-	      \multicolumn{4}{|c|}{{\bf Curso normal}}
-	      \\ \hline
-	      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{c|}{{\bf Sistema}}
-	      \\ \hline
-	      {\it 1} & 
-	      \begin{tabular}[c]{@{}l@{}}
-	        Desarrollador: da orden de\\
-	        que se inicie el servidor\\
-	        del portal.
-	      \end{tabular} &
-	      &
-	      \\ \hline
-	      &
-	      &
-	      {\it 2a} &
-	      \begin{tabular}[c]{@{}l@{}}
-	        Comprueba que el servidor\\
-	        está detenido y lo inicia\\
-	        para que el portal esté\\
-	        operativo.
-	      \end{tabular}
-	      \\ \hline
-	    \end{tabular}
-	    \caption{Curso normal de CU-1. Inicio automático del servidor del portal}
-	    \label{table:cn_cu_1}
-      \end{center}
-    \end{table}
-
-    \begin{table}[!ht]
-      \begin{center}
-	    \begin{tabular}{|l|l|}
-	      \hline
-	      \multicolumn{2}{|c|}{{\bf Curso alterno}}
-	      \\ \hline
-	      {\it 2b} &
-	      \begin{tabular}[c]{@{}l@{}}
-	        Si el servidor está funcionando, no se ejecuta el script de\\
-	        inicio del servidor.
-	      \end{tabular}\\
-	      \hline
-	    \end{tabular}
-	    \caption{Curso alterno de CU-1. Inicio automático del servidor del portal}
-	    \label{table:ca_cu_1}
-      \end{center}
-    \end{table}
+    \item Descripción: el usuario se registrará con sus datos en el sistema.
+    \item Precondición: el usuario no se encuentra registrado en el sistema.
+    \item Postcondición: el usuario quedará registrado en el sistema con los datos proporcionados y se le asignará un identificador único.
 \end{itemize}
+    
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: inicia la acción\\
+        de registro en el sistema.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Dar de alta al usuario en\\
+        el sistema.
+      \end{tabular}
+      \\ \hline
+      &
+      &
+      {\it 3} &
+      \begin{tabular}[c]{@{}l@{}}
+        El usuario queda dado de\\
+        alta en el sistema y ya\\
+        puede acceder.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-1. Registro de usuarios.}
+    \label{table:cn_cu_1}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si alguno de los datos que identifican al usuario se encuentran\\
+        ya registrados en el sistema o alguno de ellos inválido, no se\\
+        continúa y se notifica el error al usuario.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-1. Registro de usuarios.}
+    \label{table:ca_cu_1}
+  \end{center}
+\end{table}
+
+% CASO DE USO 2
+\textbf{CU-2.} Identificación de usuarios (\textit{Log In}).
+
+\begin{itemize}
+    \item Descripción: el usuario iniciará con sus datos de acceso una sesión en el sistema.
+    \item Precondición: el usuario se encuentra registrado en el sistema
+    \item Postcondición: el usuario obtiene acceso al sistema y queda identificado en él, iniciándose su sesión.
+\end{itemize}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: inicia sesión.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Inicia la sesión del usuario\\
+        en el sistema y genera un hash\\
+        con el id de sesión que se enviará\\
+        al usuario.
+      \end{tabular}
+      \\ \hline
+      &
+      &
+      {\it 3} &
+      \begin{tabular}[c]{@{}l@{}}
+        El usuario queda logeado\\
+        en el sistema y ya\\
+        puede acceder.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-2. Identificación de usuarios.}
+    \label{table:cn_cu_2}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si alguno de los datos que identifican al usuario no coinciden\\
+        con los almacenados en el sistema o alguno de ellos inválido, no se\\
+        continúa y se notifica el error al usuario.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-2. Identificación de usuarios.}
+    \label{table:ca_cu_2}
+  \end{center}
+\end{table}
+
+% CASO DE USO 3
+\textbf{CU-3.} Añadir canción (\textit{Log In}).
+  
+\begin{itemize}
+    \item Descripción: se añade una canción a la colección del usuario.
+    \item Precondición: el usuario se encuentra con una sesión iniciada en el sistema
+    \item Postcondición: se vincula la canción subida al usuario cuya sesión se encontraba iniciada en el momento de subirse a la plataforma.
+\end{itemize}
+
+\begin{table}[H]
+
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: selecciona un fichero de\\
+        audio para subirlo a la plataforma.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        El fichero se sube al sistema y se\\
+        procesa.
+      \end{tabular}
+      \\ \hline
+      &
+      &
+      {\it 3} &
+      \begin{tabular}[c]{@{}l@{}}
+        La canción queda vinculada con el\\
+        usuario y se añade como parte de\\
+        su colección.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-3. Añadir canción.}
+    \label{table:cn_cu_3}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si el formato del fichero no es válido o se cancela la subida por\\
+        cualquier motivo, la canción no se añade al sistema y se notifica\\
+        al usuario el error.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-3. Añadir canción.}
+    \label{table:ca_cu_3}
+  \end{center}
+\end{table}
+
 
 \subsubsection{Diagramas de actividad}
 

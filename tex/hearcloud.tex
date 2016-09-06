@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-tabla]{babel}
 
-\usepackage{titlesec}
+%\usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
@@ -165,6 +165,18 @@ pdfproducer = {pdflatex}
   \penalty -\@Mi
 }
 \makeatother
+
+
+% ********************************************************************
+% Profundidad de la tabla de contenidos
+% ********************************************************************
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% ********************************************************************
+% Párrafos con letras en lugar de números
+% ********************************************************************
+\renewcommand\theparagraph{\alph{paragraph}}
 
 % ********************************************************************
 % Memoria
