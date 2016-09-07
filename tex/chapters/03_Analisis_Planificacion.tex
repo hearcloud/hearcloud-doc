@@ -368,8 +368,8 @@ alternativo de cada acción.
       {\it 2b} &
       \begin{tabular}[c]{@{}l@{}}
         Si alguno de los datos que identifican al usuario no coinciden\\
-        con los almacenados en el sistema o alguno de ellos inválido, no se\\
-        continúa y se notifica el error al usuario.
+        con los almacenados en el sistema o alguno de ellos inválido, no\\
+        se continúa y se notifica el error al usuario.
       \end{tabular}\\
       \hline
     \end{tabular}
@@ -379,7 +379,7 @@ alternativo de cada acción.
 \end{table}
 
 % CASO DE USO 3
-\textbf{CU-3.} Añadir canción (\textit{Log In}).
+\textbf{CU-3.} Añadir canción.
   
 \begin{itemize}
     \item Descripción: se añade una canción a la colección del usuario.
@@ -398,8 +398,9 @@ alternativo de cada acción.
       \\ \hline
       {\it 1} & 
       \begin{tabular}[c]{@{}l@{}}
-        Usuario: selecciona un fichero de\\
-        audio para subirlo a la plataforma.
+        Usuario: selecciona un fichero\\
+        de audio para subirlo a la\\
+        plataforma.
       \end{tabular} &
       &
       \\ \hline
@@ -407,17 +408,17 @@ alternativo de cada acción.
       &
       {\it 2a} &
       \begin{tabular}[c]{@{}l@{}}
-        El fichero se sube al sistema y se\\
-        procesa.
+        El fichero se sube al sistema\\ 
+        y se procesa.
       \end{tabular}
       \\ \hline
       &
       &
       {\it 3} &
       \begin{tabular}[c]{@{}l@{}}
-        La canción queda vinculada con el\\
-        usuario y se añade como parte de\\
-        su colección.
+        La canción queda vinculada\\
+        con el usuario y se añade\\
+        como parte de su colección.
       \end{tabular}
       \\ \hline
     \end{tabular}
@@ -445,13 +446,250 @@ alternativo de cada acción.
   \end{center}
 \end{table}
 
+% CASO DE USO 4
+\textbf{CU-4.} Consultar canción.
+  
+\begin{itemize}
+    \item Descripción: se muestran los datos solicitados de una canción.
+    \item Precondición: el usuario se encuentra con una sesión iniciada en el sistema.
+    \item Postcondición: el sistema devuelve los datos.
+\end{itemize}
+
+\begin{table}[H]
+
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: selecciona una canción para\\
+        consultar sus datos.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Busca la canción en el\\
+        sistema y devuelve sus\\
+        datos al usuario.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-4. Consultar canción.}
+    \label{table:cn_cu_4}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si la canción que intenta pedir el usuario no existe en la base\\
+        de datos o no pertene al usuario, no se devuelven sus datos y se\\
+        informa del error.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-4. Consultar canción.}
+    \label{table:ca_cu_4}
+  \end{center}
+\end{table}
+
+% CASO DE USO 5
+\textbf{CU-5.} Modificar canción.
+  
+\begin{itemize}
+    \item Descripción: se actualizan los atributos que se han modificado en la canción.
+    \item Precondición: el usuario se encuentra con una sesión iniciada en el sistema.
+    \item Postcondición: el sistema actualiza los datos de la canción.
+\end{itemize}
+
+\begin{table}[H]
+
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: selecciona una canción\\
+        para modificar sus datos.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Busca la canción en el sistema\\
+        y devuelve un formulario con\\
+        los datos actuales para que\\
+        el usuario modifique los que\\
+        considere oportunos.
+      \end{tabular}
+      \\ \hline
+      {\it 3a} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: modifica algún dato\\
+        del formulario y lo envía.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 4a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Actualiza la canción con los\\
+        nuevos datos y lo envía al\\
+        usuario de vuelta para que\\
+        los visualice.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-5. Modificar canción.}
+    \label{table:cn_cu_5}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si la canción que intenta pedir el usuario no existe en la base\\
+        de datos o no pertene al usuario, no se devuelven sus datos y se\\
+        informa del error.
+      \end{tabular}\\
+      \hline
+      {\it 3b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si el usuario cancela la edición de los datos, se termina el proceso\\
+        y no se continúa.
+      \end{tabular}\\
+      \hline
+      {\it 4b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si alguno de los datos introducidos no es válido, se le notifica al\\
+        usuario y se vuelve al punto 3a.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-5. Modificar canción.}
+    \label{table:ca_cu_5}
+  \end{center}
+\end{table}
+
+% CASO DE USO 6
+\textbf{CU-6.} Eliminar canción.
+  
+\begin{itemize}
+    \item Descripción: se elimina del sistema la canción seleccionada.
+    \item Precondición: el usuario se encuentra con una sesión iniciada en el sistema.
+    \item Postcondición: el sistema elimina los datos de la canción, el fichero asociado y su imagen (en caso de que tenga).
+\end{itemize}
+
+\begin{table}[H]
+
+  \begin{center}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \multicolumn{4}{|c|}{{\bf Curso normal}}
+      \\ \hline
+      \multicolumn{2}{|c|}{{\bf Actor}} & \multicolumn{2}{|c|}{{\bf Sistema}}
+      \\ \hline
+      {\it 1} & 
+      \begin{tabular}[c]{@{}l@{}}
+        Usuario: selecciona una canción para\\
+        eliminar de su colección.
+      \end{tabular} &
+      &
+      \\ \hline
+      &
+      &
+      {\it 2a} &
+      \begin{tabular}[c]{@{}l@{}}
+        Busca la canción en el \\
+        sistema y elimina todos\\
+        sus datos, desvinculándose\\
+        de la colección del usuario.
+      \end{tabular}
+      \\ \hline
+    \end{tabular}
+    \caption{Curso normal de CU-6. Eliminar canción.}
+    \label{table:cn_cu_6}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      \multicolumn{2}{|c|}{{\bf Curso alterno}}
+      \\ \hline
+      {\it 2b} &
+      \begin{tabular}[c]{@{}l@{}}
+        Si la canción que intenta pedir el usuario no existe en la base\\
+        de datos o no pertene al usuario, no se eliminan sus datos y se\\
+        informa del error.
+      \end{tabular}\\
+      \hline
+    \end{tabular}
+    \caption{Curso alterno de CU-6. Eliminar canción.}
+    \label{table:ca_cu_6}
+  \end{center}
+\end{table}
+
+% CASO DE USO 7,8,9,10
+
+\textbf{CU-7, CU-8, CU-9, CU-10} CRUD listas de reproducción.\\
+
+Los casos de uso correspondientes a la creación, consulta, actualización y borrado de listas de reproducción son análogos a los descritos para el caso de las canciones.
 
 \subsubsection{Diagramas de actividad}
 
-\paragraph{Usuario registrado} \mbox{}\\
+Los diagramas de actividad representan la descomposición de un proceso en las diferentes subacciones y estados en los que se apoya. A continuación se muestra un diagrama de actividad que representa el flujo que pueden seguir las acciones del usuario en el sistema.
 
-\subsubsection{Diagramas de secuencia}
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=1\textwidth]{../visual_paradigm_uml/Diagrama_actividad_sistema.png}
+  \caption{Diagrama de actividad del sistema}
+  \label{fig:diag_ac_sis}
+  \end{center}
+\end{figure}
 
-\subsubsection{Diagramas de clases del diseño}
+\subsubsection{Diagrama de clases del diseño}
 
+En el diagrama de clases del diseño se muestra la especificación para las clases software de la aplicación e incluye:
 
+\begin{itemize}
+    \item Clases, asociaciones y atributos
+    \item Métodos
+    \item Navegabilidad
+    \item Dependencias
+\end{itemize}
+
+A continuación se muestra el diagrama de clases del diseño propuesto:
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{../visual_paradigm_uml/Diagrama_clases.png}
+  \caption{Diagrama de clases del diseño}
+  \label{fig:diag_class}
+  \end{center}
+\end{figure}
