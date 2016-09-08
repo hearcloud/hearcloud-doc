@@ -54,14 +54,40 @@ El Sistema Gestor de Base de Datos es el encargado de proporcionar la capa de ac
 \section{Frontend}
 El \textit{frontend} es la capa de presentación de la aplicación, encargada de maquetar la estructura semántica del contenido (HTML), codificar el diseño en hojas de estilo (CSS) y agregar la interacción con el usuario (Javascript). En este proyecto, el cliente representará un papel bastante importante con respecto a la experiencia del usuario en la plataforma. Por ello, se trabajará además con una librería de Javascript, jQuery, que nos ayudará a dicho propósito, facilitando algunas tareas. 
 
-\subsection{jQuery y Ajax}
-Como comentantamos, jQuery \cite{jQuery} es una librería de Javascript, que facilita la interacción con los documentos HTML mediante la manipulación del árbol DOM.
+\subsection{jQuery y AJAX}
+Como comentábamos, jQuery \cite{jQuery} es una librería de Javascript, que facilita la interacción con los documentos HTML mediante la manipulación del árbol DOM y cuyo principal objetivo es dotar a la web de un comportamiento dinámico. Además, destacar que es compatible con la mayoría de navegadores actuales y la última versión de CSS (CSS3).
 
-\subsection{Bootstrap}
+La principal ventaja de jQuery frente a otros competidores como Flash es su excelente integración con AJAX.
+
+AJAX (\textit{Asynchronous Javascript and XML}) \cite{AJAX} consiste en una técnica de desarrollo web para generar aplicaciones interactivas que se ejecutan del lado cliente de manera que es posible realizar cambios en las páginas sin necesidad de recargarlas, mejorando consecuentemente la interactividad, velocidad y usabilidad de las aplicaciones.
+
+En definitiva, el uso de estas tecnologías permitirán mejorar la experiencia de usuario mientras este navegue por el sistema.
+
+\subsection{Twitter Bootstrap}
+Otro aspecto a tener en cuenta de cara al lado del cliente de nuestra aplicación, es su diseño. Para ello, nos apoyaremos en Twitter Bootstrap \cite{Bootstrap}, un framework CSS que facilita la tarea de dar forma al sitio web. De esta forma, podremos crear interfaces de usuario elegantes y limpias además de responder a un diseño adaptativo según dispositivos y pantallas de forma muy sencilla.
 
 \section{Infraestructura}
 
+Por último, para alojar el código de nuestra aplicación y dotar al sistema de las diferentes funcionalidades, haremos uso de Github.
+
 \subsection{Github}
+
+Github \cite{Github} es una plataforma de desarrollo colaborativo que permite alojar proyectos mediante el sistema de control de versiones Git \cite{Git}. El código puede almacenarse tanto de forma pública como privada (opción de pago), y es alojado en repositorios que brindan las siguientes características:
+
+\begin{itemize}
+	\item Una wiki para cada proyecto.
+	\item Una página web para cada proyecto (\textit{Github Pages}).
+	\item Sistema de seguimiento de errores (\textit{issues}).
+	\item Gráfico que muestra cómo trabajan los desarrolladores en el repositorio y bifurcaciones del proyecto.
+	\item Funcionalidades de red social
+\end{itemize}
+
+De esta forma, se ha creado una organización dentro de la plataforma en \url{https://github.com/hearcloud} que alojará los repositorios asociados al proyecto, en este caso:
+
+\begin{itemize}
+	\item Repositorio para el código del proyecto: \url{https://github.com/hearcloud/hearcloud}.
+	\item Repositorio para la documentación en {\LaTeX\xspace}: \url{https://github.com/hearcloud/hearcloud-doc}
+\end{itemize}
 
 \subsection{Travis-CI}
 
