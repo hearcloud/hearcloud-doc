@@ -90,12 +90,17 @@ De esta forma, se ha creado una organización dentro de la plataforma en \url{ht
 \end{itemize}
 
 \subsection{Travis-CI}
+La Integración continua es un modelo que consiste en realizar compilación y ejecución de pruebas de un proyecto de manera automática lo más a menudo posible para así detectar fallos cuanto antes. De esta forma, la herramienta descarga el código fuente alojado en el sistema de control de versiones y ejecuta una serie de pruebas, generando los informes correspondientes. En este caso, se utilizará Travis-CI \cite{TravisCI} por su fácil integración con Github. La configuración de la herramienta consiste en un fichero `.travis.yml` que se aloja en el directorio raíz del proyecto. Una vez sincronizado con Github, éste detecta la configuración y ejecuta las órdenes indicadas. El resultado final produce una etiqueta indicando el estado después de pasar los tests, y si todo fue correctamente indicará ``\textit{Build: passing}''. El enlace al mismo es el siguiente: \url{https://travis-ci.org/hearcloud/hearcloud}.
 
 \subsection{Plataforma Como Servicio}
+Como parte del desarrollo y del proceso de Integración Continua, se plantea el despliegue de la aplicación en lo que se denomina una Platafroma Como Servicio (PaaS, del inglés \textit{platform as a service}) \cite{PaaS}, que permite a sus usuarios desarrollar, desplegar y gestionar aplicaciones sin la complejidad de construir y mantener la infraestructura típica asociada a estas. Para ello utilizaremos Openshift, el cual está integrado perfectamente con Travis CI para automatizar todo el proceso de despliegue. 
 
 \subsubsection{Openshift}
+Openshift \cite{Openshift} es un producto de computación en la nube de plataforma como servicio propiedad de Red Hat que permite desplegar aplicaciones web creadas en diferentes lenguajes, entre ellos python, mediante Git. La plataforma se encarga de mantener los servicios subyacentes a la aplicación y la escalabilidad de la aplicación como se necesite. 
 
 \subsection{Provisionamiento: Ansible}
+Para realizar el provisionamiento de todas las dependencias necesarias para desplegar la aplicación en un servidor en producción se utilizará Ansible \cite{Ansible}, que es una herramienta de orquestación que por medio de Playbooks escritos en YAML \cite{YAML} ejecuta tareas y comandos en las máquinas indicadas.
 
 \subsection{Ejecución automática de comandos en remoto. Fabric}
+Por último, una vez disponga la máquina servidor de todas las dependencias necesarias, se podrán ejecutar los comandos necesarios de despliegue mediante la librería python Fabric \cite{Fabric}, que permite la ejecución de los comandos definidos en un fichero \texttt{fabfily.py} de manera automática en el servidor remoto proporcionado.
 
