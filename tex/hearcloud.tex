@@ -6,13 +6,15 @@
 %\usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage[hidelinks]{hyperref}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{pdfpages}
 
 \usepackage{xspace}
 
 \usepackage{datatool}% http://ctan.org/pkg/datatool
 \usepackage{float}
+\usepackage{textcomp}
+
 
 % ********************************************************************
 % Información reutilizable
@@ -111,18 +113,19 @@ pdfproducer = {pdflatex}
 % ********************************************************************
 % Estilo de listados de código
 % ********************************************************************
-\lstdefinelanguage{Python}{
- keywords={typeof, null, catch, switch, in, int, str, float, self},
- keywordstyle=\color{ForestGreen}\bfseries,
- ndkeywords={boolean, throw, import},
- ndkeywords={return, class, if ,elif, endif, while, do, else, True, False , catch, def},
- ndkeywordstyle=\color{BrickRed}\bfseries,
- identifierstyle=\color{black},
- sensitive=false,
- comment=[l]{\#},
- morecomment=[s]{/*}{*/},
- commentstyle=\color{purple}\ttfamily,
- stringstyle=\color{red}\ttfamily,
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
 }
 
 
@@ -178,6 +181,18 @@ pdfproducer = {pdflatex}
 % ********************************************************************
 \renewcommand\theparagraph{\alph{paragraph}}
 
+% ********************************************************************
+% Para añadir texto normal entre las referencias de la bibliografía
+% ********************************************************************
+\newenvironment{bibcomment}{%
+  \item[]%
+  \begingroup%
+  \par%
+  \parshape0%
+}{%
+  \par%
+  \endgroup%
+}
 % ********************************************************************
 % Memoria
 % ********************************************************************

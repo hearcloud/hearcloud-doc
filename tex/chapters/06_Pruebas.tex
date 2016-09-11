@@ -2,13 +2,53 @@
 \label{cap:pruebas}
 
 \section{Desarrollo basado en  test (TDD)}
+El desarrollo basado en tests (TDD, del inglés \texttt{Test Driven Development}), es un proceso de desarrollo de software que se basa en la repetición de un ciclo de desarrollo en tiempos cortos y, donde cada ciclo funciona de la siguiente forma: se inicia el proceso creando lo que denominamos tests unitarios. A continuación, crearíamos el código necesario para que esas pruebas se superaran y, por último, refactorizaríamos ese código escrito, iniciándose el siguiente ciclo de desarrollo.
 
-\subsection{Tests unitarios}
+El desarrollo basado en tests consiste en esto, pero como nosotros ya tenemos desarrollado nuestro proyecto, ya tenemos todo el código escrito, por lo que bastará con programar los tests que prueben el código que ya tenemos.
 
-\subsubsection{Modelos}
+\section{Tests unitarios}
+Entonces, siguiendo las prácticas propuestas, se pretende desarrollar una serie de \textit{tests} y comprobaciones automatizadas que se ejecuten durante el proceso de integración y despliegue, con el objetivo de garantizar que todo funciona tal y como debe de hacerlo. 
 
-\subsubsection{Vistas}
+De esta forma, cada módulo de código se desarrolla junto con una serie de pruebas que garanticen su funcionamiento de forma independiente al resto del sistema. Estos tests se programan dentro de cada aplicación en cuestión.
 
-\subsubsection{Formularios}
+Django tiene esto en cuenta \cite{DjTest} y provee de las herramientas necesarias para llevarlo a cabo. Nosotros, llevaremos a cabo tres tipos de pruebas diferentes: pruebas en los modelos, pruebas en las vistas y pruebas en los formularios.
+
+\subsection{Modelos}
+
+Los tests a este nivel se encargan de probar el código referente a los métodos creados dentro de nuestros modelos.
+
+Para hacer pruebas en los modelos, por convención, se crea un archivo con el nombre \texttt{test\_models.py} dentro de la aplicación.
+
+Dentro de este fichero, definiremos una clase por cada modelo que tengamos en dicha aplicación. Dicha clase heredará de la clase \texttt{TestCase} que Django nos proporciona dentro de \texttt{django.test}. Esto será equivalente también para el caso de las vistas y los formularios. En esta clase, crearemos los siguientes métodos:
+
+\begin{itemize}
+	\item \texttt{setUp(self)}: es lo primero que se ejecutará cuando lancemos las pruebas, por lo que aquí definiremos todo lo que queramos que perdure a lo largo de los tests.
+	\item Crearemos un método por cada método del modelo que haya que probar. Seguiremos la nomenclatura \texttt{test\_} seguido del nombre del método correspondiente y, la forma de probar que funciona correctamente será comparar lo que devuelve realmente (llamando al propio método), con lo que esperamos que devuelva (escrito directamente).
+\end{itemize}
+
+\subsection{Vistas}
+
+Estas pruebas comprobarán únicamente el código correspondiente al código de las vistas de nuestra aplicación.
+
+En cada aplicación, siguiendo la convención, crearemos un fichero \texttt{test\_views.py} con tal propósito.
+
+Al igual que antes, deberemos crear un método \texttt{setUp(self)}, pero en este caso, lo que inicializaremos dentro de éste, será una simulación del navegador para realizar peticiones que nos proporciona Django como \texttt{Client} dentro del módulo \texttt{django.test}.
+
+Crearemos un método dentro de la clase por cada vista que queramos probar y, dentro de éstos, simularemos las peticiones correspondientes haciendo uso de la instancia \texttt{cliente} inicializada dentro del método \texttt{setUp}.
+
+La comprobación que llevaremos a cabo es que el código de respuesta de la petición que realicemos sea 200, que es el código HTTP que identifica que una petición a una página web ha sido satisfactoria.
+
+\subsection{Formularios}
+
+Las pruebas aquí comprobarán el código correspondiente a los formularios de nuestra aplicación. Para ello, al igual que en los casos anteriores, se creará un fichero \texttt{test\_forms.py} dentro de cada aplicación del proyecto.
+
+La lógica de cada método de prueba de formularios que creemos aquí será la siguiente. En primer lugar, comprobaremos que, en nuestra base de datos, la cantidad de objetos del tipo que crea el formulario a probar es 0. La base de datos que se utiliza para ejecutar las pruebas se crea en el momento de lanzarlas y es independiente a la base de datos principal de nuestro proyecto. Una vez hecho esto, crearemos un diccionario Python con los datos requeridos por el formulario para la creación del modelo y llamaremos a la URL correspondiente pasándole como argumento el diccionario que hemos creado. Si todo fue correctamente, ahora, si realizamos la comprobación inicial, el número que deberíamos obtener de objetos de ese tipo en la base de datos es 1.
 
 \subsection{Travis CI}
+
+Como comentamos en secciones anteriores, utilizaremos Travis CI como plataforma para ejecutar nuestras pruebas cada vez que se envíe una nueva actualización de código al repositorio de Github. Para ello, debemos configurar el fichero \texttt{.travis.yml} ubicado en \url{https://github.com/hearcloud/hearcloud/blob/master/.travis.yml} con la orden correspondiente dentro del apartado \texttt{script}. En este caso, y puesto que también queremos realizar tests de cobertura \cite{Coveralls} que analicen el porcentaje de código que se está probando con respecto al total, las órdenes serán las siguientes:
+
+\begin{itemize}
+	\item \texttt{python manage.py test applications.box applications.users applications.home}
+	\item \texttt{coverage run --source=applications.box,applications.users,applications.home manage.py test applications.box applications.users applications.home}
+\end{itemize}

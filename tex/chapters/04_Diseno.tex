@@ -7,7 +7,7 @@ En esta sección se especificarán los aspectos más relevantes para el desarrol
 
 \subsection{Patrón Modelo-Vista-Controlador}
 
-Para el desarrollo se plantea basarse en el patrón de arquitectura software Modelo-Vista-Controlador (MVC), cuyos principios se basan en separar los datos y la lógica de la aplicación de su interfaz, con el objetivo de facilitar el desarrollo y mantenimiento de la aplicación. De este modo, distinguimos los siguientes componentes:
+Para el desarrollo se plantea basarse en el patrón de arquitectura de software Modelo-Vista-Controlador (MVC), cuyos principios se basan en separar los datos y la lógica de la aplicación de su interfaz, con el objetivo de facilitar el desarrollo y mantenimiento de la aplicación. De este modo, distinguimos los siguientes componentes:
 
 \begin{itemize}
     \item \textbf{Modelo}: representa la información con la que opera el sistema. Gestiona los accesos a dicha información, como consultas y actualizaciones. Se encarga de enviar a la vista la información que solicite para su visualización. Las peticiones de acceso a dicha información llegan a éste a través del controlador.
@@ -18,7 +18,7 @@ Para el desarrollo se plantea basarse en el patrón de arquitectura software Mod
 Una vez presentado el patrón, debemos buscar una tecnología que se adapte a este. Finalmente, nos decantaremos por Django, un framework de alto nivel para trabajar con python en el servidor.
 
 \subsection{Django} \cite{Dj}
-Como decíamos, Django se trata de un framework de desarrollo web a alto nivel y de código abierto (licencia BSD), escrito en Python y que representa el patrón de diseño Modelo-vista-controlador. Su meta fundamental es facilitar la creación de sitios web complejos, haciéndo énfasis en la reutilización, conectividad y extensibilidad de componentes, el desarrollo ágil y el principio No te repitas (DRY, del inglés \textit{Don't Repeat Yourself}). A continuación se exponen algunas de las razones por las que elegir a Django frente a otros frameworks de desarrollo web.
+Como decíamos, Django se trata de un framework de desarrollo web a alto nivel y de código abierto (licencia BSD), escrito en Python y que representa el patrón de diseño Modelo-vista-controlador (o más bien una versión mejorada de éste que se describirá más adelante). Su meta fundamental es facilitar la creación de sitios web complejos, haciéndo énfasis en la reutilización, conectividad y extensibilidad de componentes, el desarrollo ágil y el principio No te repitas (DRY, del inglés \textit{Don't Repeat Yourself}). A continuación se exponen algunas de las razones por las que elegir a Django frente a otros frameworks de desarrollo web.
 
 \begin{itemize}
     \item ORM: se trata de una potente herramienta de base de datos. Basándose en los modelos que el usuario codifique, Django es capaz de convertirlos a una base de datos orientada a objetos. Además, se ofrece soporte a diversos Sistemas Gestores de Base de Datos (MySQL, MariaDB, PostgreSQL, Oracle y SQLite), unificados bajo una misma sintaxis y dejando de lado a SQL como lenguaje de consultas.
@@ -47,6 +47,8 @@ Esto se debió a que los desarrolladores del framework no buscaron apegarse a na
   \label{fig:django_arch}
   \end{center}
 \end{figure}
+
+Ahora bien, ¿cómo se conecta todo esto? En primer lugar, tendremos un navegador. Cuando el usuario haga click en cualquier enlace de éste, se activará un archivo de configuración de URL. Este archivo enviará la petición a una vista. Aquí, si ésta precisa de información de la base de datos, hará uso del modelo, que interactúa directamente con ella y extrae la información que necesite para devolvérsela a la vista. Por último, de vuelta a la vista, ésta se encarga de enviar la información a un template, que simplemente la organizará y la mostrará en el navegador.
 
 \subsubsection{Sistema Gestor de Base de Datos}
 El Sistema Gestor de Base de Datos es el encargado de proporcionar la capa de acceso a la información de la base de datos. Como hemos comentado, haciendo uso del ORM de Django, utilizaremos un conector para base de datos SQLite durante el desarrollo, que se modificará por un MySQL o postgreSQL para las fases de ``puesta en marcha'' (\textit{staging}) y producción.

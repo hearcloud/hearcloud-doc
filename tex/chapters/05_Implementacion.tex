@@ -1,40 +1,188 @@
 \chapter{Implementación}
 \label{cap:implementacion}
 
-Tras el estudio en el capítulo anterior de las herramientas apropiadas para el desarrollo del prototipo de nuestra aplicación, pasamos a describir en éste los aspectos propios, ya si, de su implementación. Lo primero a analizar será la estructura de nuestro proyecto en Django.
+Tras el estudio en el capítulo anterior de las herramientas apropiadas para el desarrollo del prototipo de nuestra aplicación, pasamos a describir en éste los aspectos propios, ya si, de su implementación. Lo primero a analizar será el entorno de trabajo.
+
+\section{Entorno de trabajo}
+Una de las ventajas de Python, es la posibilidad de trabajar con lo que se denomina entornos virtuales. Su principal función es que nuestras dependencias sean independientes para cada proyecto, evitando así el conflicto entre ellas. De esta forma, en cada entorno virtual tendremos exactamente las dependencias necesarias para un solo proyecto. Para ello, haremos uso de la herramienta \texttt{virtualenv}. El proceso para crearlo y activarlo sería el siguiente:
+
+\begin{itemize}
+	\item Instalación: \texttt{sudo pip install virtualenv}.
+	\item Creación: \texttt{virtualenv hearcloudenv}.
+	\item Activación: \texttt{source hearcloudenv/bin/activate}
+\end{itemize}
+
+Como se puede comprobar, para la instalación anterior, se utilizó PIP, que se trata de la herramienta utilizada para la instalación y administración de paquetes Python y que viene a reemplazar al anterior \texttt{easy\_install}. Los comandos básicos a utilizar serán:
+
+\begin{itemize}
+	\item Instalación de paquetes: \texttt{pip install <nombre\_paquete>}
+	\item Desinstalación de paquetes: \texttt{pip uninstall <nombre\_paquete>}
+	\item Actualización de paquetes: \texttt{pip install <nombre\_paquete> --upgrade}
+	\item Consultar las dependencias instaladas: \texttt{pip freeze --local}
+\end{itemize}
+
+Todo esto se realizará dentro del entorno virtual activado.
 
 \section{Estructura del proyecto}
+A continuación, abordaremos la forma en la que se estructurará el proyecto Django.
+
+\subsection{Fichero de configuración \texttt{settings.py}}
+
+El archivo \texttt{settings.py} ubicado dentro del directorio del proyecto es el encargado de controlar toda la configuración de un proyecto en Django, que es completamente modificable según tus necesidades. A continuación describiremos algunas de las configuraciones que podemos encontrar por defecto en este fichero:
+
+\begin{itemize}
+	\item \texttt{DEBUG}. Es la variable que utiliza el proyecto para entrar en un estado de depuración y que se muestre el detalle de los errores que se vayan presentando. Por defecto viene activada como \texttt{True}, pero es necesario cambiarla a \texttt{False} cuando pasemos a un ambiente de producción.
+	\item \texttt{DATABASES}. Es la variable que utilizamos para configurar el motor de base de datos a utilizar. Por defecto viene configurada con \textit{sqlite}, pero nosotros podemos utilizar cualquier motor de base de datos relacional como \textit{mysql} o \textit{postgresql}.
+	\item \texttt{BASE\_DIR}. Es la variable que contiene la dirección al archivo donde nos encontramos, es decir, al \texttt{settings.py}.
+	\item \texttt{SECRET\_KEY}. Es la llave secreta de nuestro proyecto y sirve para encriptar la información dentro de la base de datos.
+	\item \texttt{INSTALLED\_APPS}. Es la variable que describe las aplicaciones que estamos utilizando dentro del proyecto.
+	\item \texttt{ROOT\_URLCONF}. Variable que contiene la dirección al fichero de urls \texttt{urls.py} que se crea al iniciar un proyecto en Django.
+	\item \texttt{LANGUAGE\_CODE}. Variable para elegir el idioma base de nuestro proyecto.
+\end{itemize}
+
+Para más información acerca de las diferentes variables de este fichero se puede consultar la siguiente referencia \cite{DjSett}.
+
+Por defecto Django te crea el proyecto así, con un solo archivo de configuración, pero nosotros lo que haremos será crear una nueva carpeta y dentro de esta crear diferentes configuraciones según el ambiente de desarrollo.
+
+\begin{itemize}
+	\item \texttt{settings/}
+	\begin{itemize}
+		\item \texttt{\_\_init\_\_.py}
+		\item \texttt{base.py}. Este fichero contendrá la configuración que sea equivalente para todos los entornos de desarrollo.
+		\item \texttt{local.py}. Archivo que contendrá solamente la configuración para un entorno de desarrollo local.
+		\item \texttt{staging.py}. Configuración para un ambiente de ``puesta en escena'', que se realiza justo antes de la puesta en producción.
+		\item \texttt{production.py}. Configuración para el ambiente de producción.
+	\end{itemize}
+\end{itemize}
+
+De esta forma, seremos capaces de trabajar de forma independiente al ambiente de trabajo en el que te encuentres. Esto lo haremos por medio de variables de entorno, permitirán detectar en cual de ellos estamos.
 
 \subsection{Aplicaciones}
+Una aplicación Django es un módulo o librería pequeña diseñada para representar un aspecto simple del proyecto. Un proyecto en Django se compone de diversas aplicaciones. Cada vez que creemos una aplicación, deberemos darla de alta dentro del proyecto, para lo que existe la variable mencionada dentro del fichero de configuración \texttt{settings.py}, \texttt{INSTALLED\_APPS}. Nosotros dividiremos esta variable en tres partes:
+
+\begin{itemize}
+	\item \texttt{DJANGO\_APPS}: para las aplicaciones instaladas por Django.
+	\item \texttt{THIRD\_PARTY\_APPS}: para aplicaciones de terceros que instalemos en nuestro proyecto.
+	\item \texttt{LOCAL\_APPS}: para las aplicaciones que vayamos a crear nosotros.
+\end{itemize}
+
+Dentro de toda aplicación Django encontraremos la siguiente estructura básica:
+
+\begin{itemize}
+	\item Directorio \texttt{migration}. Aquí se almacenarán los ficheros correspondientes a las migraciones que vayamos creando en la aplicación.
+	\item \texttt{\_\_init\_\_.py}: archivo que convierte la carpeta en un módulo.
+	\item \texttt{admin.py}: archivo para registrar los modelos en el panel de administración que nos ofrece Django.
+	\item \texttt{models.py}: archivo para la creación de los modelos.
+	\item \texttt{test.py}: archivo para la creación de los tests unitarios.
+	\item \texttt{views.py}: archivo para la creación de las vistas de la aplicación.
+\end{itemize}
+
+Nuestro proyecto se dividirá en tres aplicaciones que se describen a continuación.
 
 \subsubsection{Home}
 
+La aplicación \textit{Home} gestionará la página principal del sistema: esa página con información general sobre la aplicación que se muestra siempre en primer lugar a todos los usuarios no registrados que visitan el sitio web y presenta, entre otras cosas, las características que ofrece. Para la creación de esta página nos apoyaremos en un tema base creado con Bootstrap que podemos descargar de la siguiente dirección \cite{SBA} y modificaremos a nuestro gusto.
+
+Esta aplicación enlazará con las vistas de registro e inicio de sesión al sistema y se encargará de gestionar las redirecciones necesarias (si el usuario ha iniciado sesión, le redireccionará a la vista principal para usuarios registrados, si no, mostrará la vista principal descrita en esta sección).
+
+El código de esta aplicación puede consultarse en: \url{https://github.com/hearcloud/hearcloud/tree/master/applications/home}
+
 \subsubsection{Users}
+
+La aplicación \textit{Users} gestionará todo lo referente a los usuarios del sistema. En esta aplicación crearemos el modelo de \texttt{Usuario} descrito en el diagrama de clases del diseño dentro del fichero \texttt{models.py} correspondiente. Para ello, heredamos de la clase \texttt{AbstractBaseUser} que nos proporciona Django, a la que le añadimos los atributos correspondientes. El campo \texttt{slug} nos permitirá identificar inequívocamente a cada usuario y lo utilizaremos como parte de nuestra estructura de URLs.
+
+\begin{lstlisting}[language=python,caption={Modelo personalizado de usuarios},label={lst:py_usermodel}]
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db import models
+
+class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Represents the users models.
+    """
+
+    username = models.CharField(unique=True, max_length=30)
+    email = models.EmailField(unique=True, max_length=50)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
+    picture = ThumbnailerImageField(upload_to='profile_images', blank=True)
+
+    slug = models.SlugField(unique=True)
+
+    objects = UserManager()  # objects is the manager of every model (users.objects.all(), ...)
+
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'username'
+
+\end{lstlisting}
+
+El código de esta aplicación puede consultarse en: \url{https://github.com/hearcloud/hearcloud/tree/master/applications/users}
 
 \subsubsection{Box}
 
+La aplicación \textit{Box} representa el núcleo del sistema. En ella definiremos los modelos correspondientes a las canciones y las listas de reproducción y será la encargada de manejar la subida y creación de los mismos, la conversión entre formatos de ficheros, mostrar la colección al usuario y realizar las conversiones correspondientes entre nuestra representación de metadatos en los modelos y cómo estos se guardan realmente en cada tipo de fichero (MP3, M4A, AIFF y WAV).
+
+El código de esta aplicación puede consultarse en: \url{https://github.com/hearcloud/hearcloud/tree/master/applications/box}
+
 \subsection{URLs}
 
+Un esquema limpio y elegante de URLs es un detalle importante a tener en cuenta en aplicaciones web de alta calidad. Django te permite diseñarlas como quieras, sin ninguna limitación por parte del framework. 
+
+En nuestro caso, crearemos un modulo de configuración de URLs \texttt{urls.py} por cada aplicación, que unificaremos dentro del fichero de configuración de URLs del proyecto. Estos módulos realizarán un mapeo entre patrones de URLs (expresiones regulares simples) con funciones Python (nuestras vistas).
+
 \subsection{Archivos estáticos}
+Los sitios web normalmente necesitan servir archivos adicionales como imágenes, código JavaScript o CSS. Django se refiere a estos ficheros como ``archivos estáticos'' y provee de un módulo para gestionarlos. Tras realizar las configuraciones oportunas en el fichero de \textit{settings}, crearemos un directorio \texttt{static} dentro de cada aplicación y, para una mejor organización, separaremos el contenido en función del tipo (imagen, css y  javascript).
 
 \section{Dependencias}
 
+Para definir las dependencias de los proyectos Django, se hace uso de un fichero \texttt{requirements}. Será esencial que se encuentre bien definido para el despliegue correcto de la aplicación en otros entornos y para un correcto trabajo en equipo si fuera el caso. Nosotros crearemos la siguiente estructura en el directorio raíz de nuestro proyecto:
+
+\begin{itemize}
+	\item \texttt{requirements/}
+	\begin{itemize}
+		\item \texttt{base.txt}. De este archivo heredarán los tres siguientes.
+		\item \texttt{local.txt}.
+		\item \texttt{staging.txt}.
+		\item \texttt{production.txt}.
+	\end{itemize}
+\end{itemize}
+
+De esta forma, dentro de cada fichero ubicaremos únicamente las dependencias necesarias para cada ambiente de desarrollo. Por ejemplo, para instalar las dependencias dentro de un ambiente local de desarrollo escribiríamos: \texttt{pip install -r requirements/local.txt}, asegurándonos que nos encontremos dentro del entorno virtual adecuado.
+
+A continuación analizaremos las dependencias principales de nuestra aplicación.
+
 \subsection{Pillow}
 
-\subsection{Django Cors Headers}
+Pillow \cite{Pillow} se trata de un \textit{fork} de la librería de tratamiento de imágenes de Python PIL que continúa su desarrollo incluyendo tests de integración continua, desarrollo público en Github y publicaciones regulares en el índice de paquetes Python. 
+
+Esta dependencia es requerida en el proyecto para poder trabajar con imágenes, como por ejemplo, los campos \texttt{ImageField}.
 
 \subsection{Django FM}
 
+Django FM \cite{DjFM} es una aplicación que permite crear formularios modales adaptativos mediante AJAX para crear, editar y eliminar objetos en Django.
+
 \subsection{Django Rest Framework}
+Django Rest Framework \cite{DjRF} es una herramienta potente y flexible para crear API RESTs con Django. De esta forma, convertiremos, por medio de unas clases serializadoras, nuestros modelos en objetos que pueden ser devueltos según una estrucutra de URLs como objetos JSON y, también al contrario, recibir objetos JSON a una URL y transformarlos a la estructura de nuestros modelos.
 
 \subsubsection{Django Rest Auth}
+Django Rest Auth \cite{DjRA} es una herramienta que provee a nuestra API REST de un sistema de autenticación y registro.
 
 \subsubsection{Django Allauth}
+Django Allauth \cite{DjAllauth} es una dependencia que debemos incluir para que la anterior disponga también del mecanismo de registro. 
+
+\subsection{Django CORS Headers}
+
+Django CORS Headers \cite{DjCORS} es una aplicación que añade cabeceras CORS (\textit{Cross-Origin Resouce Sharing} a las respuestas HTTP. Esto permitirá que diferentes dominios origen puedan comunicar con nuestra aplicación a través de nuestra API.
 
 \subsection{Mutagen}
+Mutagen \cite{Mutagen} se trata del módulo Python más popular que permite gestionar metadatos en ficheros de audio, aunque existen otros \cite{PUMID3H}. Mutagen soporta los formatos ASF, FLAC, MP4, Monkey\textquotesingle s Audio, MP3, Musepack, Ogg Opus, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, WavPack, OptimFROG y AIFF.
 
-\subsection{pyDub}
+Será el encargado de leer dichos metadatos provenientes de los ficheros que suban los usuarios a la plataforma y, una vez recuperados, almacenarlos en su modelo correspondiente. Podemos encontrar una tabla comparativa de cómo se almacenan cada uno de esos datos en función del tipo de fichero en la siguiente referencia: \cite{TMMT}.
 
-\subsubsection{ffmpeg}
+\subsection{Pydub}
+Pydub \cite{pydub} es una librería que permite manejar ficheros de audio en Python. La incluiremos para realizar conversiones entre los diferentes formatos de audio, para lo cual, necesitaremos además que la librería ffmpeg \cite{ffmpeg} se encuentre instalada en el sistema.
 
 \subsection{Humanize}
+
+Humanize es una librería Python que contiene diversas utilidades de ``humanización'' como, por ejemplo, convertir números en duraciones legibles (``hace 3 minutos'').
