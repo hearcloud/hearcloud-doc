@@ -40,14 +40,14 @@ El archivo \texttt{settings.py} ubicado dentro del directorio del proyecto es el
 	\item \texttt{LANGUAGE\_CODE}. Variable para elegir el idioma base de nuestro proyecto.
 \end{itemize}
 
-Para más información acerca de las diferentes variables de este fichero se puede consultar la siguiente referencia \cite{DjSett}.
+Para más información acerca de las diferentes variables de este fichero se puede consultar la siguiente referencia bibliográfica \cite{DjSett}.
 
 Por defecto Django te crea el proyecto así, con un solo archivo de configuración, pero nosotros lo que haremos será crear una nueva carpeta y dentro de esta crear diferentes configuraciones según el ambiente de desarrollo.
 
 \begin{itemize}
 	\item \texttt{settings/}
 	\begin{itemize}
-		\item \texttt{\_\_init\_\_.py}
+		\item \texttt{\_\_init\_\_.py}. Archivo que convierte la carpeta en un módulo.
 		\item \texttt{base.py}. Este fichero contendrá la configuración que sea equivalente para todos los entornos de desarrollo.
 		\item \texttt{local.py}. Archivo que contendrá solamente la configuración para un entorno de desarrollo local.
 		\item \texttt{staging.py}. Configuración para un ambiente de ``puesta en escena'', que se realiza justo antes de la puesta en producción.
@@ -55,7 +55,7 @@ Por defecto Django te crea el proyecto así, con un solo archivo de configuraci�
 	\end{itemize}
 \end{itemize}
 
-De esta forma, seremos capaces de trabajar de forma independiente al ambiente de trabajo en el que te encuentres. Esto lo haremos por medio de variables de entorno, permitirán detectar en cual de ellos estamos.
+De esta forma, seremos capaces de trabajar de forma independiente al ambiente de trabajo en el que nos encontremos. Esto lo haremos por medio de variables de entorno, permitirán detectar en cual de ellos estamos.
 
 \subsection{Aplicaciones}
 Una aplicación Django es un módulo o librería pequeña diseñada para representar un aspecto simple del proyecto. Un proyecto en Django se compone de diversas aplicaciones. Cada vez que creemos una aplicación, deberemos darla de alta dentro del proyecto, para lo que existe la variable mencionada dentro del fichero de configuración \texttt{settings.py}, \texttt{INSTALLED\_APPS}. Nosotros dividiremos esta variable en tres partes:
@@ -81,9 +81,9 @@ Nuestro proyecto se dividirá en tres aplicaciones que se describen a continuaci
 
 \subsubsection{Home}
 
-La aplicación \textit{Home} gestionará la página principal del sistema: esa página con información general sobre la aplicación que se muestra siempre en primer lugar a todos los usuarios no registrados que visitan el sitio web y presenta, entre otras cosas, las características que ofrece. Para la creación de esta página nos apoyaremos en un tema base creado con Bootstrap que podemos descargar de la siguiente dirección \cite{SBA} y modificaremos a nuestro gusto.
+La aplicación \textit{Home} gestionará la página principal del sistema, que es la página con información general sobre la aplicación que se muestra siempre en primer lugar a todos los usuarios no registrados que visitan el sitio web y presenta, entre otras cosas, las características que ofrece el sistema. Para la creación de esta página nos apoyaremos en un tema base creado con Bootstrap que podemos descargar de la siguiente dirección \cite{SBA} y modificaremos a nuestro gusto.
 
-Esta aplicación enlazará con las vistas de registro e inicio de sesión al sistema y se encargará de gestionar las redirecciones necesarias (si el usuario ha iniciado sesión, le redireccionará a la vista principal para usuarios registrados, si no, mostrará la vista principal descrita en esta sección).
+Esta aplicación enlazará con las vistas de registro e inicio de sesión al sistema y se encargará de gestionar las redirecciones necesarias: si el usuario ha iniciado sesión, le redireccionará a la vista principal para usuarios registrados, en caso contrario, mostrará la vista principal descrita en esta sección.
 
 El código de esta aplicación puede consultarse en: \url{https://github.com/hearcloud/hearcloud/tree/master/applications/home}
 
@@ -127,7 +127,7 @@ El código de esta aplicación puede consultarse en: \url{https://github.com/hea
 
 \subsection{URLs}
 
-Un esquema limpio y elegante de URLs es un detalle importante a tener en cuenta en aplicaciones web de alta calidad. Django te permite diseñarlas como quieras, sin ninguna limitación por parte del framework. 
+Un esquema limpio y elegante de URLs es un detalle importante a tener en cuenta en aplicaciones web de alta calidad. Django nos permite diseñarlas como queramos, sin ninguna limitación por parte del framework. 
 
 En nuestro caso, crearemos un modulo de configuración de URLs \texttt{urls.py} por cada aplicación, que unificaremos dentro del fichero de configuración de URLs del proyecto. Estos módulos realizarán un mapeo entre patrones de URLs (expresiones regulares simples) con funciones Python (nuestras vistas).
 
@@ -148,7 +148,7 @@ Para definir las dependencias de los proyectos Django, se hace uso de un fichero
 	\end{itemize}
 \end{itemize}
 
-De esta forma, dentro de cada fichero ubicaremos únicamente las dependencias necesarias para cada ambiente de desarrollo. Por ejemplo, para instalar las dependencias dentro de un ambiente local de desarrollo escribiríamos: \texttt{pip install -r requirements/local.txt}, asegurándonos que nos encontremos dentro del entorno virtual adecuado.
+De esta forma, dentro de cada fichero ubicaremos únicamente las dependencias necesarias para cada ambiente de desarrollo. Por ejemplo, para instalar las dependencias dentro de un ambiente local de desarrollo escribiríamos: \texttt{pip install -r requirements/local.txt}, asegurándonos de que nos encontremos dentro del entorno virtual adecuado.
 
 A continuación analizaremos las dependencias principales de nuestra aplicación.
 
@@ -173,12 +173,12 @@ Django Allauth \cite{DjAllauth} es una dependencia que debemos incluir para que 
 
 \subsection{Django CORS Headers}
 
-Django CORS Headers \cite{DjCORS} es una aplicación que añade cabeceras CORS (\textit{Cross-Origin Resouce Sharing} a las respuestas HTTP. Esto permitirá que diferentes dominios origen puedan comunicar con nuestra aplicación a través de nuestra API.
+Django CORS Headers \cite{DjCORS} es una aplicación que añade cabeceras CORS (\textit{Cross-Origin Resouce Sharing}) a las respuestas HTTP. Esto permitirá que diferentes dominios origen puedan comunicar con nuestra aplicación a través de nuestra API.
 
 \subsection{Mutagen}
 Mutagen \cite{Mutagen} se trata del módulo Python más popular que permite gestionar metadatos en ficheros de audio, aunque existen otros \cite{PUMID3H}. Mutagen soporta los formatos ASF, FLAC, MP4, Monkey\textquotesingle s Audio, MP3, Musepack, Ogg Opus, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, WavPack, OptimFROG y AIFF.
 
-Será el encargado de leer dichos metadatos provenientes de los ficheros que suban los usuarios a la plataforma y, una vez recuperados, almacenarlos en su modelo correspondiente. Podemos encontrar una tabla comparativa de cómo se almacenan cada uno de esos datos en función del tipo de fichero en la siguiente referencia: \cite{TMMT}.
+Será el encargado de leer dichos metadatos provenientes de los ficheros que suban los usuarios a la plataforma y, una vez recuperados, almacenarlos en su modelo correspondiente. Podemos encontrar una tabla comparativa de cómo se almacenan cada uno de esos datos en función del tipo de fichero en la referencia \cite{TMMT}.
 
 \subsection{Pydub}
 Pydub \cite{pydub} es una librería que permite manejar ficheros de audio en Python. La incluiremos para realizar conversiones entre los diferentes formatos de audio, para lo cual, necesitaremos además que la librería ffmpeg \cite{ffmpeg} se encuentre instalada en el sistema.

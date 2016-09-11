@@ -1,7 +1,7 @@
 \chapter{Diseño}
 \label{cap:disenio}
 
-En esta sección se especificarán los aspectos más relevantes para el desarrollo del sistema: tecnologías a utilizar, cómo y por qué utilizarlas, etc. A continuación se profundizará en las herramientas a utilizar en cada una de las partes de la plataforma web y, para una mejor comprensión, dividiremos este apartado en tres: servidor (\textit{backend}), cliente (\textit{frontend}) e infraestructura.
+En esta sección se especificarán los aspectos más relevantes para el desarrollo del sistema: tecnologías a utilizar, cómo y por qué utilizarlas, etc. A continuación se profundizará en las herramientas a emplear en cada una de las partes de la plataforma web y, para una mejor comprensión, dividiremos este apartado en tres: servidor (\textit{backend}), cliente (\textit{frontend}) e infraestructura.
 
 \section{Backend}
 
@@ -18,13 +18,13 @@ Para el desarrollo se plantea basarse en el patrón de arquitectura de software 
 Una vez presentado el patrón, debemos buscar una tecnología que se adapte a este. Finalmente, nos decantaremos por Django, un framework de alto nivel para trabajar con python en el servidor.
 
 \subsection{Django} \cite{Dj}
-Como decíamos, Django se trata de un framework de desarrollo web a alto nivel y de código abierto (licencia BSD), escrito en Python y que representa el patrón de diseño Modelo-vista-controlador (o más bien una versión mejorada de éste que se describirá más adelante). Su meta fundamental es facilitar la creación de sitios web complejos, haciéndo énfasis en la reutilización, conectividad y extensibilidad de componentes, el desarrollo ágil y el principio No te repitas (DRY, del inglés \textit{Don't Repeat Yourself}). A continuación se exponen algunas de las razones por las que elegir a Django frente a otros frameworks de desarrollo web.
+Como decíamos, Django se trata de un framework de desarrollo web a alto nivel y de código abierto (licencia BSD), escrito en Python y que representa el patrón de diseño Modelo-vista-controlador (o más bien una versión mejorada de éste que se describirá más adelante). Su meta fundamental es facilitar la creación de sitios web complejos, haciéndo énfasis en la reutilización, conectividad y extensibilidad de componentes, el desarrollo ágil y el principio No te repitas (DRY, del inglés \textit{Don't Repeat Yourself}). A continuación se exponen algunas de las razones por las que se prefiere a Django frente a otros frameworks de desarrollo web.
 
 \begin{itemize}
     \item ORM: se trata de una potente herramienta de base de datos. Basándose en los modelos que el usuario codifique, Django es capaz de convertirlos a una base de datos orientada a objetos. Además, se ofrece soporte a diversos Sistemas Gestores de Base de Datos (MySQL, MariaDB, PostgreSQL, Oracle y SQLite), unificados bajo una misma sintaxis y dejando de lado a SQL como lenguaje de consultas.
     \item Formularios: Gracias a Django la validación de formularios es mucho más sencilla. Solamente tienes que definir los atributos de tus modelos y como quieres que funcione la validación básica.
     \item Panel de administración: Django ofrece un panel de administración altamente personalizable que puede incluso utilizarse como area de administración final en tu aplicación web.
-    \item Django no es PHP: para aquellos que busquen un cambio, Django es una gran alternativa a PHP, además de tener una gran comunidad de usuarios detrás.
+    \item Django no es PHP: para aquellos que busquen un cambio, Django es una gran alternativa a PHP, además de tener una gran comunidad internacional de usuarios detrás.
     \item Django es Python, un lenguaje de scripting elegante y potente con una gran comunidad de usuarios detrás.
     \item Proyectos existosos construidos en Django \cite{SUDj}: 
     \begin{itemize}
@@ -38,7 +38,7 @@ Como decíamos, Django se trata de un framework de desarrollo web a alto nivel y
 \subsubsection{Modelo-Template-Vista}
 Un aspecto a tener en cuenta en Django, es que no representa el patrón Modelo-vista-controlador como tal, si no que se basa en lo que podríamos denominar ``Modelo-template-vista''. Si bien es cierto que se asemeja mucho a la implementación del patrón MVC, para Django la Vista describe ``qué'' datos serán presentados y no ``cómo'' se verán los mismos, siéndo los \textit{templates} los encargados de esta última tarea.
 
-Esto se debió a que los desarrolladores del framework no buscaron apegarse a nada en particular, sino desarrollar una herramienta que funcionara lo mejor posible.
+Esto se debió a que los desarrolladores del framework no buscaron apegarse a nada en particular, sino que desarrollaron una herramienta que funcionara lo mejor posible.
 
 \begin{figure}[H]
   \begin{center}
@@ -48,7 +48,7 @@ Esto se debió a que los desarrolladores del framework no buscaron apegarse a na
   \end{center}
 \end{figure}
 
-Ahora bien, ¿cómo se conecta todo esto? En primer lugar, tendremos un navegador. Cuando el usuario haga click en cualquier enlace de éste, se activará un archivo de configuración de URL. Este archivo enviará la petición a una vista. Aquí, si ésta precisa de información de la base de datos, hará uso del modelo, que interactúa directamente con ella y extrae la información que necesite para devolvérsela a la vista. Por último, de vuelta a la vista, ésta se encarga de enviar la información a un template, que simplemente la organizará y la mostrará en el navegador.
+Ahora bien, ¿cómo se conecta todo esto? En primer lugar, tendremos un navegador. Cuando el usuario haga click en cualquier enlace de éste, se activará un archivo de configuración de URL. Este archivo enviará la petición a una vista. Aquí, si se precisa de información de la base de datos, hará uso del modelo, que interactúa directamente con ella y extrae la información que necesite para devolvérsela a la vista. Por último, de vuelta a la vista, ésta se encarga de enviar la información a un template, que simplemente la organizará y la mostrará en el navegador.
 
 \subsubsection{Sistema Gestor de Base de Datos}
 El Sistema Gestor de Base de Datos es el encargado de proporcionar la capa de acceso a la información de la base de datos. Como hemos comentado, haciendo uso del ORM de Django, utilizaremos un conector para base de datos SQLite durante el desarrollo, que se modificará por un MySQL o postgreSQL para las fases de ``puesta en marcha'' (\textit{staging}) y producción.
@@ -57,16 +57,16 @@ El Sistema Gestor de Base de Datos es el encargado de proporcionar la capa de ac
 El \textit{frontend} es la capa de presentación de la aplicación, encargada de maquetar la estructura semántica del contenido (HTML), codificar el diseño en hojas de estilo (CSS) y agregar la interacción con el usuario (Javascript). En este proyecto, el cliente representará un papel bastante importante con respecto a la experiencia del usuario en la plataforma. Por ello, se trabajará además con una librería de Javascript, jQuery, que nos ayudará a dicho propósito, facilitando algunas tareas. 
 
 \subsection{jQuery y AJAX}
-Como comentábamos, jQuery \cite{jQuery} es una librería de Javascript, que facilita la interacción con los documentos HTML mediante la manipulación del árbol DOM y cuyo principal objetivo es dotar a la web de un comportamiento dinámico. Además, destacar que es compatible con la mayoría de navegadores actuales y la última versión de CSS (CSS3).
+Como comentábamos, jQuery \cite{jQuery} es una librería de Javascript, que facilita la interacción con los documentos HTML mediante la manipulación del árbol DOM y cuyo principal objetivo es dotar a la web de un comportamiento dinámico. Además, tiene la ventaja de que es compatible con la mayoría de navegadores actuales y la última versión de CSS (CSS3).
 
-La principal ventaja de jQuery frente a otros competidores como Flash es su excelente integración con AJAX.
+La principal cualidad de jQuery frente a otros competidores como Flash es su excelente integración con AJAX.
 
 AJAX (\textit{Asynchronous Javascript and XML}) \cite{AJAX} consiste en una técnica de desarrollo web para generar aplicaciones interactivas que se ejecutan del lado cliente de manera que es posible realizar cambios en las páginas sin necesidad de recargarlas, mejorando consecuentemente la interactividad, velocidad y usabilidad de las aplicaciones.
 
 En definitiva, el uso de estas tecnologías permitirán mejorar la experiencia de usuario mientras este navegue por el sistema.
 
 \subsection{Twitter Bootstrap}
-Otro aspecto a tener en cuenta de cara al lado del cliente de nuestra aplicación, es su diseño. Para ello, nos apoyaremos en Twitter Bootstrap \cite{Bootstrap}, un framework CSS que facilita la tarea de dar forma al sitio web. De esta forma, podremos crear interfaces de usuario elegantes y limpias además de responder a un diseño adaptativo según dispositivos y pantallas de forma muy sencilla.
+Otro aspecto a tener en cuenta de cara al lado del cliente de nuestra aplicación, es su diseño. Para ello, nos apoyaremos en Twitter Bootstrap \cite{Bootstrap}, un framework CSS que facilita la tarea de dar forma al sitio web. En consecuencia, podremos crear interfaces de usuario elegantes y limpias además de responder a un diseño adaptativo según dispositivos y pantallas de forma muy sencilla.
 
 \section{Infraestructura}
 
@@ -92,7 +92,7 @@ De esta forma, se ha creado una organización dentro de la plataforma en \url{ht
 \end{itemize}
 
 \subsection{Travis-CI}
-La Integración continua es un modelo que consiste en realizar compilación y ejecución de pruebas de un proyecto de manera automática lo más a menudo posible para así detectar fallos cuanto antes. De esta forma, la herramienta descarga el código fuente alojado en el sistema de control de versiones y ejecuta una serie de pruebas, generando los informes correspondientes. En este caso, se utilizará Travis-CI \cite{TravisCI} por su fácil integración con Github. La configuración de la herramienta consiste en un fichero `.travis.yml` que se aloja en el directorio raíz del proyecto. Una vez sincronizado con Github, éste detecta la configuración y ejecuta las órdenes indicadas. El resultado final produce una etiqueta indicando el estado después de pasar los tests, y si todo fue correctamente indicará ``\textit{Build: passing}''. El enlace al mismo es el siguiente: \url{https://travis-ci.org/hearcloud/hearcloud}.
+La Integración continua es un modelo que consiste en realizar compilación y ejecución de pruebas de un proyecto de manera automática lo más frecuente posible para así detectar fallos cuanto antes. De esta forma, la herramienta descarga el código fuente alojado en el sistema de control de versiones y ejecuta una serie de pruebas, generando los informes correspondientes. En este caso, se utilizará Travis-CI \cite{TravisCI} por su fácil integración con Github. La configuración de la herramienta consiste en un fichero `.travis.yml` que se aloja en el directorio raíz del proyecto. Una vez sincronizado con Github, éste detecta la configuración y ejecuta las órdenes indicadas. El resultado final produce una etiqueta indicando el estado después de pasar los tests, y si todo fue correctamente indicará ``\textit{Build: passing}''. El enlace al mismo es el siguiente: \url{https://travis-ci.org/hearcloud/hearcloud}.
 
 \subsection{Plataforma Como Servicio}
 Como parte del desarrollo y del proceso de Integración Continua, se plantea el despliegue de la aplicación en lo que se denomina una Platafroma Como Servicio (PaaS, del inglés \textit{platform as a service}) \cite{PaaS}, que permite a sus usuarios desarrollar, desplegar y gestionar aplicaciones sin la complejidad de construir y mantener la infraestructura típica asociada a estas. Para ello utilizaremos Openshift, el cual está integrado perfectamente con Travis CI para automatizar todo el proceso de despliegue. 
