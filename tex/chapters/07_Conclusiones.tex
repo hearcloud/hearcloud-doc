@@ -5,8 +5,61 @@
 
 Tras finalizar el proyecto, hemos obtenido un \textit{prototipo funcional} de la aplicación que habíamos especificado en un principio, así como una memoria correctamente documentada sobre el desarrollo del mismo.
 
-\section{Trabajos futuros}
+En base a las primeras pruebas de despliegue, el prototipo desarrollado presenta un conjunto de tecnologías e infraestructura viables para resolver el problema planteado, permitiendo así un desarrollo posterior.
 
-\subsection{AngularJS}
+Hearcloud concluye como un sistema \textit{open source} para la gestión de la bilbioteca musical de sus usuarios, resultado de 7 meses de desarrollo listo para su implantación en cualquier arquitectura.
+
+\subsection{Conocimientos adquiridos}
+Gracias al análisis y desarrollo de este proyecto, se han ido adquiriendo conocimientos en diversos ámbitos del desarrollo de software, sobre todo, en el ámbito de las tecnologías web, entre las que destacamos:
+
+\begin{itemize}
+	\item Profundización en el conocimiento del lenguaje de programación Python y librerías asociadas al tratamiento de audio, así como del framework para desarrollo web Django.
+	\item Técnicas para el desarrollo de interfaces de aplicaciones \textit{frontend} mediante tecnologías web modernas como \textit{Bootstrap}, \textit{jQuery} y \textit{AJAX}.
+	\item Habilidades para la gestión de proyectos software de tamaño medio aplicando técnicas de desarrollo viables.
+	\item Desarrollo de pruebas automatizadas que comprueben la calidad del software generado
+	\item Técnicas \textit{DevOps} para la aplicación de un flujo de desarrollo con testeo y despligue automáticos mediante integración continua.
+\end{itemize} 
+
+\subsection{Materias cursadas relacionadas con el proyecto}
+
+El proyecto aplica conocimientos adquiridos en diversas asignaturas relacionadas con la titulación, tanto generales como de la especialidad en Tecnologías de la Información.
+
+\begin{itemize}
+	\item Materias relacionadas con los fundamentos de programación \cite{FP} \cite{MP} y Programación y Diseño Orientado a Objetos \cite{PDOO}.
+	\item Fundamentos de Bases de Datos \cite{FBD}, Estructura de Datos \cite{ED}, Diseño y Desarrollo de Sistemas de Información \cite{DDSI} y Fundamentos de Ingeniería del Software \cite{FIS}.
+	\item Tecnologías de la Información: Desarrollo de Aplicaciones para Internet \cite{DAI} e Infraestructura Virtual \cite{IV}.
+\end{itemize}
+
+\section{Trabajos futuros}
+Si bien el prototipo resuelve los problemas iniciales planteados, aún dista de ser un software listo para producción competente de acuerdo a las exigencias del mercado actuales, por lo que se abren diferentes líneas de trabajo orientadas al desarrollo de un producto completo.
+
+\begin{itemize}
+	\item Mejoras en cuanto a la eficiencia de la interfaz de usuario en el lado del cliente.
+	\item Mejoras en las funcionalidades existentes e inclusión de otras nuevas (envío de emails, soporte para nuevos formatos de audio, etc).
+	\item Creación de clientes móviles y de escritorio en las diferentes plataformas.
+\end{itemize}
+
+Teniendo en cuenta todo esto, se realiza una estimación preliminar para un tiempo de desarrollo adicional de seis meses con un equipo de desarrollo de entre cuatro a seis desarrolladores para obtener dicha versión completa del producto.
+
+\subsection{Angular}
+Angular \cite{Angular} es un framework Javascript de código abierto, mantenido por Google, que se utiliza para crear lo que se denomina páginas web de una sola página \cite{SPA}. Aunque su versión 2.0 se encuentra aún en fase de pruebas frente a la actual 1.5.8, está encaminada a convertirse en todo un estándar y una tecnología muy a tener en cuenta para abordar desarrollos del lado del cliente.
+
+Se plantea la posibilidad de portar el \textit{frontend} desarrollado durante el transcurso de este proyecto a una aplicación Angular, apostando por su versión 2 que incluye diversos cambios y mejoras, entre los que destacamos:
+
+\begin{itemize}
+	\item Enfocado a Web Components \cite{WC}. Se trata de un conjunto de especificaciones que indican cómo deben de desarrollarse webs a día de hoy.
+	\item \textit{Mobile First Design}. Representa mejoras de rendimiento en terminales móviles.
+	\item Detección de cambios en las vistas optimizada.
+	\item Inyección de dependencias reescrita completamente para mejorar la gestión de memoria y la seguridad en el acceso a las distintas instancias que se solicitan
+	\item Apuesta por TypeScript \cite{Typescript}, que es una extensión de Javascript que cuenta con interesantes características y mejoras:
+	\begin{itemize}
+		\item Posee elementos de programación orientada a objetos, como tipado de datos, clases, etc.
+		\item Es totalmente compatible con código Javascript al tratarse de una extensión de este, por lo que pueden combinarse ambos en un mismo documento.
+		\item Al no estar soportado de manera nativa por los navegadores, éste se compila a ECMAScript \cite{ECMAS} para poder ejecutarse en cualquiera de ellos.
+		\item Desarrollado por Anders Hejlsberg \cite{AH} de Microsoft, padre de Turbo Pascal \cite{TurboP}, Delphi \cite{Delphi} y C\# \cite{CSharp}, lo que supone una gran confianza en él.
+	\end{itemize}
+\end{itemize}
 
 \subsection{Aplicación de escritorio y dispositivos móviles}
+
+Otra de las ventajas que ofrece Angular es que es fácilmente portable a otras plataformas. Gracias a frameworks como Electron \cite{Electron} e Ionic \cite{Ionic} sería viable el desarrollo de aplicaciones de escritorio y móviles nativas sin demasiado esfuerzo adicional por parte del equipo de desarrollo.
